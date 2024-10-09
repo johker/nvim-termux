@@ -15,12 +15,25 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- Map German characters to brackets
+-- Map ö to insert <> and place the cursor between the brackets
+-- vim.api.nvim_set_keymap("i", "ö", "<><Esc>i", { noremap = true, silent = true })
+
+-- Map ä to insert [] and place the cursor between the brackets
+-- vim.api.nvim_set_keymap("i", "ä", "[]<Esc>i", { noremap = true, silent = true })
+
+-- Map brackets separately to use vim closetag plugin
+vim.api.nvim_set_keymap("i", "ö", "<", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "ä", ">", { noremap = true, silent = true })
+
+-- Map to insert () with an empty line in between and place the cursor on the empty line
+vim.api.nvim_set_keymap("i", "ü", "{}<Esc>i<CR><Esc>O", { noremap = true, silent = true })
+
+-- Map to insert () with an empty line between, and place the cursor on that line
+vim.api.nvim_set_keymap("i", "ß", "()<Esc>i<CR><Esc>O", { noremap = true, silent = true })
+
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", "\"_dP")
-
-
-foo
-bar
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
@@ -49,3 +62,4 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end)
+
