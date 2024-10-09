@@ -17,20 +17,24 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- Map German characters to brackets
 -- Map ö to insert <> and place the cursor between the brackets
--- vim.api.nvim_set_keymap("i", "ö", "<><Esc>i", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "ö", "<><Esc>i", { noremap = true, silent = true })
 
 -- Map ä to insert [] and place the cursor between the brackets
--- vim.api.nvim_set_keymap("i", "ä", "[]<Esc>i", { noremap = true, silent = true })
-
--- Map brackets separately to use vim closetag plugin
-vim.api.nvim_set_keymap("i", "ö", "<", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "ä", ">", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "ä", "[]<Esc>i", { noremap = true, silent = true })
 
 -- Map to insert () with an empty line in between and place the cursor on the empty line
 vim.api.nvim_set_keymap("i", "ü", "{}<Esc>i<CR><Esc>O", { noremap = true, silent = true })
 
 -- Map to insert () with an empty line between, and place the cursor on that line
 vim.api.nvim_set_keymap("i", "ß", "()<Esc>i<CR><Esc>O", { noremap = true, silent = true })
+
+-- u/tuerda
+-- So what this does is that in insert mode you type "word" and hit control+s
+-- and you will immediately have <word_></word> with the cursor at the _.
+vim.api.nvim_buf_set_keymap(0, 'i', '<C-s>', '<Esc>yiwi<lt><Esc>ea></><Esc>hpF>i', { noremap = true, silent = true })
+-- Same idea but places the cursor between the tags.
+vim.api.nvim_buf_set_keymap(0, 'i', '<C-x>', '<Esc>yiwi<lt><Esc>ea></><Esc>hpF>a', { noremap = true, silent = true })
+
 
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", "\"_dP")
